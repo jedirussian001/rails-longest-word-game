@@ -1,0 +1,18 @@
+<h1>here are your letters</h1>
+<div>
+  <ul class="inline">
+<p><% @letters.each do |letter|%></p>
+  <li><%= letter %></li>
+<p><% end %></p>
+  </ul>
+</div>
+<div class = 'ask'>
+<p>Whats the longest word you can find?</p>
+  <form class= "form-inline" action="/score" method="post" data-turbo="false">
+    <input class = 'form-control form-group mb-2' type="text" name="word">
+    <input class="btn" type="submit" value="Play">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters,@letters %>
+    <%# I can also parse the key :letters and the @letters as a parameter using hidden field %>
+  </form>
+</div>
